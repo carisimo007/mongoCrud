@@ -1,642 +1,179 @@
 /* =======================
-   Reset básico - Halloween
+   Header y botón de backup
 ======================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #1a1a1a, #2d1b00);
-    color: #ff6b00;
-    line-height: 1.6;
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
-}
-
-/* Efecto de telaraña de fondo */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        radial-gradient(circle at 20% 30%, rgba(255,107,0,0.1) 2px, transparent 2px),
-        radial-gradient(circle at 80% 70%, rgba(139,0,0,0.1) 2px, transparent 2px);
-    background-size: 50px 50px;
-    pointer-events: none;
-    z-index: -1;
-}
-
-/* =======================
-   Contenedor principal
-======================= */
-.container {
-    width: 95%;
-    max-width: 1400px;
-    margin: 30px auto;
-    background: rgba(34, 0, 0, 0.8);
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 
-        0 8px 32px rgba(255, 69, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    border: 2px solid #ff4500;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Efecto de borde brillante */
-.container::before {
-    content: "";
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, #ff6b00, #ff0000, #8b0000, #ff6b00);
-    border-radius: 16px;
-    z-index: -1;
-    animation: borderGlow 3s ease-in-out infinite;
-}
-
-@keyframes borderGlow {
-    0%, 100% { opacity: 0.7; }
-    50% { opacity: 1; }
-}
-
-/* =======================
-   Títulos - Estilo Halloween
-======================= */
-h1 {
-    font-size: 2.8em;
+.header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
-    text-align: center;
-    color: #ff4500;
-    text-shadow: 
-        3px 3px 0 #8b0000,
-        0 0 10px #ff6b00,
-        0 0 20px #ff4500;
-    letter-spacing: 2px;
-    position: relative;
-    animation: spookyFloat 4s ease-in-out infinite;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
-@keyframes spookyFloat {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    25% { transform: translateY(-5px) rotate(0.5deg); }
-    75% { transform: translateY(5px) rotate(-0.5deg); }
-}
-
-h1::after {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #ff4500, transparent);
-}
-
-h2 {
-    font-size: 1.6em;
-    margin: 20px 0 12px;
-    color: #ff6b00;
-    border-bottom: 3px solid #8b0000;
-    padding-bottom: 6px;
-    text-shadow: 2px 2px 0 #330000;
-    position: relative;
-}
-
-h2::before {
-    content: "🎃";
-    position: absolute;
-    left: -35px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.3em;
-}
-
-/* =======================
-   Formularios - Tema Espeluznante
-======================= */
-form label {
-    display: block;
-    font-weight: bold;
-    margin-top: 12px;
-    color: #ffa500;
-    text-shadow: 1px 1px 2px #000;
-    font-size: 1em;
-}
-
-form input, form select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 6px;
+.btn-backup {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: white;
+    padding: 12px 20px;
+    border: none;
     border-radius: 8px;
-    border: 2px solid #8b0000;
-    font-size: 0.95em;
-    background: rgba(50, 0, 0, 0.8);
-    color: #ffa500;
-    transition: all 0.3s ease;
-}
-
-form input::placeholder {
-    color: #ff8c00;
-    opacity: 0.7;
-}
-
-form input:focus, form select:focus {
-    outline: none;
-    border-color: #ff4500;
-    box-shadow: 
-        0 0 15px rgba(255, 69, 0, 0.7),
-        inset 0 0 10px rgba(255, 107, 0, 0.3);
-    background: rgba(70, 0, 0, 0.9);
-}
-
-/* Botones con estilo Halloween */
-form button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 15px;
-    border-radius: 10px;
-    border: none;
-    font-size: 1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    position: relative;
-    overflow: hidden;
-}
-
-form button[type="submit"] {
-    background: linear-gradient(45deg, #ff6b00, #ff4500);
-    color: #330000;
-    text-shadow: 1px 1px 0 rgba(255,255,255,0.3);
-}
-
-form button[type="submit"]:hover {
-    background: linear-gradient(45deg, #ff4500, #ff0000);
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 
-        0 8px 25px rgba(255, 69, 0, 0.6),
-        0 0 0 2px #ff6b00;
-}
-
-form button[type="submit"]::before {
-    content: "👻";
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.1em;
-}
-
-/* =======================
-   Select personalizado Halloween
-======================= */
-.select-wrapper {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-}
-
-.select-wrapper::after {
-    content: "🦇";
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    transform: translateY(-50%);
-    pointer-events: none;
-    color: #ff4500;
-    font-size: 1.1em;
-}
-
-select[name="anio"] {
-    width: 100%;
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid #8b0000;
-    background: rgba(50, 0, 0, 0.9);
-    color: #ffa500;
-    font-size: 15px;
-    cursor: pointer;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-}
-
-select[name="anio"]:hover {
-    border-color: #ff4500;
-    box-shadow: 0 0 15px rgba(255, 69, 0, 0.5);
-}
-
-select[name="anio"] option {
-    background: #330000;
-    color: #ffa500;
-    padding: 10px;
-    font-size: 15px;
-}
-
-/* =======================
-   Contenedor de tabla con scroll
-======================= */
-.table-container {
-    width: 100%;
-    margin-top: 20px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 
-        0 8px 25px rgba(139, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    background: rgba(40, 0, 0, 0.9);
-    border: 2px solid #8b0000;
-    position: relative;
-    overflow-x: auto;
-}
-
-.table-container::-webkit-scrollbar {
-    height: 12px;
-}
-
-.table-container::-webkit-scrollbar-track {
-    background: rgba(50, 0, 0, 0.8);
-    border-radius: 6px;
-}
-
-.table-container::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #ff6b00, #ff4500);
-    border-radius: 6px;
-    border: 2px solid #8b0000;
-}
-
-.table-container::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #ff4500, #ff0000);
-}
-
-.table-container::before {
-    content: "🕷️🕸️";
-    position: absolute;
-    top: -15px;
-    right: 10px;
-    font-size: 1.3em;
-    z-index: 2;
-}
-
-/* =======================
-   Tabla de libros - Compacta
-======================= */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 1000px; /* Ancho mínimo para forzar scroll en pantallas pequeñas */
-    background: rgba(40, 0, 0, 0.9);
-}
-
-th, td {
-    padding: 10px 12px;
-    text-align: left;
-    border-bottom: 1px solid #8b0000;
-    font-size: 0.9em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 150px;
-}
-
-/* Columnas específicas más compactas */
-th:nth-child(1), td:nth-child(1) { /* ID */
-    width: 80px;
-    max-width: 80px;
-}
-
-th:nth-child(2), td:nth-child(2) { /* Título */
-    width: 180px;
-    max-width: 180px;
-}
-
-th:nth-child(3), td:nth-child(3) { /* Autor */
-    width: 120px;
-    max-width: 120px;
-}
-
-th:nth-child(4), td:nth-child(4) { /* ISBN */
-    width: 100px;
-    max-width: 100px;
-}
-
-th:nth-child(5), td:nth-child(5) { /* Género */
-    width: 100px;
-    max-width: 100px;
-}
-
-th:nth-child(6), td:nth-child(6) { /* Año */
-    width: 70px;
-    max-width: 70px;
-    text-align: center;
-}
-
-th:nth-child(7), td:nth-child(7) { /* Editorial */
-    width: 120px;
-    max-width: 120px;
-}
-
-th:nth-child(8), td:nth-child(8) { /* Páginas */
-    width: 70px;
-    max-width: 70px;
-    text-align: center;
-}
-
-th:nth-child(9), td:nth-child(9) { /* Acciones */
-    width: 100px;
-    max-width: 100px;
-    text-align: center;
-}
-
-th {
-    background: linear-gradient(135deg, #8b0000, #660000);
-    color: #ffa500;
+    font-size: 16px;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 0.85em;
-    text-shadow: 1px 1px 2px #000;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-}
-
-th::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #ff4500, transparent);
-}
-
-tr:nth-child(even) {
-    background: rgba(70, 0, 0, 0.4);
-}
-
-tr:nth-child(odd) {
-    background: rgba(50, 0, 0, 0.6);
-}
-
-tr:hover {
-    background: rgba(255, 69, 0, 0.2);
-    transform: scale(1.01);
+    cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: inset 0 0 0 2px #ff4500;
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.btn-backup:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+    background: linear-gradient(135deg, #219a52, #27ae60);
+}
+
+.btn-backup:active {
+    transform: translateY(0);
+}
+
+.btn-backup.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
 }
 
 /* =======================
-   Botones de acción - Compactos
+   Modal de backup
 ======================= */
-.actions {
-    display: flex;
-    gap: 6px;
-    justify-content: center;
-    align-items: center;
-}
-
-.actions button {
-    width: 35px;
-    height: 35px;
-    padding: 0;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.actions button::before {
-    content: "";
-    position: absolute;
+.backup-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
     top: 0;
-    left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    transition: left 0.5s ease;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
 }
 
-.actions button:hover::before {
-    left: 100%;
-}
-
-.actions button.edit {
-    background: linear-gradient(135deg, #ffa500, #ff8c00);
-    box-shadow: 0 3px 12px rgba(255, 165, 0, 0.4);
-}
-
-.actions button.edit:hover {
-    transform: scale(1.15) rotate(10deg);
-    box-shadow: 
-        0 5px 15px rgba(255, 165, 0, 0.6),
-        0 0 0 2px #ff8c00;
-}
-
-.actions button.delete {
-    background: linear-gradient(135deg, #8b0000, #660000);
-    box-shadow: 0 3px 12px rgba(139, 0, 0, 0.4);
-}
-
-.actions button.delete:hover {
-    transform: scale(1.15) rotate(-10deg);
-    box-shadow: 
-        0 5px 15px rgba(139, 0, 0, 0.6),
-        0 0 0 2px #ff0000;
-}
-
-/* Iconos SVG más pequeños */
-.actions button svg {
-    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.5));
-    transition: transform 0.3s ease;
-    width: 16px;
-    height: 16px;
-}
-
-.actions button:hover svg {
-    transform: scale(1.1);
-}
-
-/* =======================
-   Efectos especiales adicionales
-======================= */
-/* Fantasmas flotantes */
-@keyframes floatGhost {
-    0%, 100% { 
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 0.1;
-    }
-    25% { 
-        transform: translateY(-20px) translateX(10px) rotate(5deg);
-        opacity: 0.3;
-    }
-    50% { 
-        transform: translateY(-10px) translateX(-10px) rotate(-5deg);
-        opacity: 0.2;
-    }
-    75% { 
-        transform: translateY(-15px) translateX(5px) rotate(3deg);
-        opacity: 0.25;
-    }
-}
-
-.ghost {
-    position: fixed;
-    font-size: 1.8em;
-    z-index: -1;
-    animation: floatGhost 15s ease-in-out infinite;
-    pointer-events: none;
-}
-
-.ghost:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
-.ghost:nth-child(2) { top: 60%; right: 8%; animation-delay: 3s; }
-.ghost:nth-child(3) { bottom: 20%; left: 15%; animation-delay: 6s; }
-
-/* Indicador de scroll para móviles */
-.scroll-hint {
-    display: none;
+.backup-modal-content {
+    background: white;
+    margin: 15% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
     text-align: center;
-    color: #ffa500;
-    font-size: 0.9em;
-    margin-top: 10px;
-    animation: pulse 2s infinite;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes pulse {
-    0%, 100% { opacity: 0.7; }
-    50% { opacity: 1; }
+.backup-progress {
+    width: 100%;
+    height: 20px;
+    background: #ecf0f1;
+    border-radius: 10px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.backup-progress-bar {
+    height: 100%;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border-radius: 10px;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.backup-status {
+    margin: 10px 0;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.backup-details {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    text-align: left;
+    font-size: 14px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.backup-details h4 {
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+}
+
+.backup-details pre {
+    margin: 0;
+    white-space: pre-wrap;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
 }
 
 /* =======================
-   Responsivo - Halloween
+   Notificaciones
 ======================= */
-@media screen and (max-width: 1200px) {
-    .container {
-        width: 98%;
-        padding: 20px;
-        margin: 20px auto;
-    }
-    
-    h1 {
-        font-size: 2.2em;
-    }
-    
-    h2 {
-        font-size: 1.4em;
-    }
-    
-    h2::before {
-        left: -30px;
-        font-size: 1.1em;
-    }
-    
-    .scroll-hint {
-        display: block;
-    }
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+    max-width: 300px;
 }
 
-@media screen and (max-width: 768px) {
-    .container {
-        padding: 15px;
-        margin: 15px auto;
-    }
-    
-    h1 {
-        font-size: 1.8em;
-    }
-    
-    h2 {
-        font-size: 1.2em;
-        margin-left: 25px;
-    }
-    
-    h2::before {
-        left: -25px;
-        font-size: 1em;
-    }
-    
-    form input, form select, form button {
-        padding: 8px;
-        font-size: 0.9em;
-    }
-    
-    th, td {
-        padding: 8px 10px;
-        font-size: 0.85em;
-    }
-    
-    .actions button {
-        width: 30px;
-        height: 30px;
-    }
-    
-    .actions button svg {
-        width: 14px;
-        height: 14px;
-    }
-    
-    .ghost {
-        display: none;
-    }
+.notification.show {
+    transform: translateX(0);
 }
 
-@media screen and (max-width: 480px) {
-    body {
-        font-size: 14px;
-    }
-    
-    .container {
-        width: 100%;
-        padding: 10px;
-        margin: 10px auto;
-        border-radius: 10px;
-    }
-    
-    h1 {
-        font-size: 1.6em;
-    }
-    
-    h2 {
-        font-size: 1.1em;
-        margin-left: 20px;
-    }
-    
-    h2::before {
-        left: -20px;
-        font-size: 0.9em;
-    }
+.notification.success {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
 }
 
-/* Efecto de texto spooky para títulos importantes */
-.spooky-text {
-    animation: spookyText 3s ease-in-out infinite;
-    text-shadow: 
-        0 0 5px #ff0000,
-        0 0 10px #ff4500,
-        0 0 15px #ff6b00,
-        0 0 20px #ff0000;
+.notification.error {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
 }
 
-@keyframes spookyText {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
+.notification .close-notification {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+}
+
+/* Responsive para header */
+@media (max-width: 768px) {
+    .header-actions {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .btn-backup {
+        align-self: center;
+    }
+    
+    .notification {
+        left: 10px;
+        right: 10px;
+        max-width: none;
+    }
 }

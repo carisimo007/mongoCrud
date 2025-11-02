@@ -1,0 +1,118 @@
+{
+    "database": "biblioteca",
+    "collection": "libros",
+    "export_date": "2025-11-02T23:46:24+01:00",
+    "document_count": 11,
+    "documents": [
+        {
+            "_id": "6907cd00394efe7e1538b1e9",
+            "titulo": "1984",
+            "autor": "George Orwell",
+            "isbn": "9780451524935",
+            "genero": "Distopía",
+            "anio": 1949,
+            "editorial": "Secker & Warburg",
+            "paginas": 328
+        },
+        {
+            "_id": "6907cd00394efe7e1538b1e6",
+            "titulo": "Cien años de soledad",
+            "autor": "Gabriel García Márquez",
+            "isbn": "9780307474728",
+            "genero": "Novela",
+            "anio": 1967,
+            "editorial": "Sudamericana",
+            "paginas": 417
+        },
+        {
+            "_id": "6907cd00394efe7e1538b1ec",
+            "titulo": "Crimen y castigo",
+            "autor": "Fiódor Dostoyevski",
+            "isbn": "9780143058144",
+            "genero": "Novela",
+            "anio": 1866,
+            "editorial": "The Russian Messenger",
+            "paginas": 430
+        },
+        {
+            "_id": "6907cd00394efe7e1538b1e7",
+            "titulo": "Don Quijote de la Mancha",
+            "autor": "Miguel de Cervantes",
+            "isbn": "9788491050243",
+            "genero": "Novela",
+            "anio": 1605,
+            "editorial": "Francisco de Robles",
+            "paginas": 992
+        },
+        {
+            "_id": "6907cd00394efe7e1538b1ed",
+            "titulo": "El Hobbit",
+            "autor": "J.R.R. Tolkien",
+            "isbn": "9780547928227",
+            "genero": "Fantasía",
+            "anio": 1937,
+            "editorial": "George Allen & Unwin",
+            "paginas": 310
+        },
+        {
+            "_id": "6907cd00394efe7e1538b1e8",
+            "titulo": "El Principito",
+            "autor": "Antoine de Saint-Exupéry",
+            "isbn": "9780156012195",
+            "genero": "Literatura Infantil",
+            "anio": 1943,
+            "editorial": "Reynal & Hitchcock",
+            "paginas": 96
+        },
+        {
+            "_id": "6907cd00394efe7e1538b1ef",
+            "titulo": "El alquimista",
+            "autor": "Paulo Coelho",
+            "isbn": "9780061122415",
+            "genero": "Ficción",
+            "anio": 1988,
+            "editorial": "HarperTorch",
+            "paginas": 208
+        },
+        {
+            "_id": "6907cd00394efe7e1538b1ee",
+            "titulo": "La Metamorfosis",
+            "autor": "Franz Kafka",
+            "isbn": "9780553213690",
+            "genero": "Novela corta",
+            "anio": 1915,
+            "editorial": "Kurt Wolff Verlag",
+            "paginas": 201
+        },
+        {
+            "_id": "6907cd00394efe7e1538b1eb",
+            "titulo": "Moby Dick",
+            "autor": "Herman Melville",
+            "isbn": "9781503280786",
+            "genero": "Aventura",
+            "anio": 1851,
+            "editorial": "Harper & Brothers",
+            "paginas": 585
+        },
+        {
+            "_id": "6907cd00394efe7e1538b1ea",
+            "titulo": "Orgullo y prejuicio",
+            "autor": "Jane Austen",
+            "isbn": "9780141439518",
+            "genero": "Romance",
+            "anio": 1813,
+            "editorial": "T. Egerton",
+            "paginas": 279
+        },
+        {
+            "_id": "6907daa43fbe979493080014",
+            "titulo": "chicles",
+            "autor": "carlitos",
+            "isbn": "1234567891234",
+            "genero": "golosinas",
+            "anio": 2015,
+            "editorial": "dulceria.com",
+            "paginas": 100
+        }
+    ]
+}

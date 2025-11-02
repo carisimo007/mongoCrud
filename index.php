@@ -33,7 +33,13 @@ if (isset($_GET['action']) && ($_GET['action'] === 'updated' || $_GET['action'] 
 </head>
 <body>
 <div class="container">
-    <h1>Biblioteca Virtual 👻</h1>
+    <!-- Encabezado con título y botón de backup -->
+    <div class="header-actions">
+        <h1>Biblioteca Virtual 👻</h1>
+        <button class="btn-backup" onclick="crearBackup()" title="Crear backup de la base de datos">
+            💾 Backup DB
+        </button>
+    </div>
 
     <h2>Agregar nuevo libro</h2>
     <form action="php/create.php" method="POST" onsubmit="return confirmarAgregar();">
@@ -61,8 +67,6 @@ if (isset($_GET['action']) && ($_GET['action'] === 'updated' || $_GET['action'] 
                 ?>
             </select>
         </div>
-
-        </select>
 
         <label>Editorial:</label>
         <input type="text" name="editorial">
@@ -123,6 +127,21 @@ if (isset($_GET['action']) && ($_GET['action'] === 'updated' || $_GET['action'] 
     </table>
 </div>
 
+<!-- Modal para backup -->
+<div id="backupModal" class="backup-modal" style="display: none;">
+    <div class="backup-modal-content">
+        <h3>💾 Creando Backup</h3>
+        <div class="backup-progress">
+            <div class="backup-progress-bar" id="backupProgressBar"></div>
+        </div>
+        <div class="backup-status" id="backupStatus">Iniciando...</div>
+        <div class="backup-details">
+            <h4>Detalles del proceso:</h4>
+            <pre id="backupDetails"></pre>
+        </div>
+    </div>
+</div>
+
 <script>
 function confirmarEliminar(id) {
     if(confirm('¿Desea eliminar este libro?')) {
@@ -134,6 +153,107 @@ function confirmarEliminar(id) {
 function confirmarAgregar() {
     return confirm("¿Estás seguro que quieres agregar este libro?");
 }
+
+// Función para crear backup
+async function crearBackup() {
+    const backupBtn = document.querySelector('.btn-backup');
+    const modal = document.getElementById('backupModal');
+    const progressBar = document.getElementById('backupProgressBar');
+    const statusText = document.getElementById('backupStatus');
+    const detailsContent = document.getElementById('backupDetails');
+    
+    try {
+        // Mostrar modal y deshabilitar botón
+        modal.style.display = 'block';
+        backupBtn.classList.add('loading');
+        backupBtn.disabled = true;
+        detailsContent.textContent = '';
+
+        // Actualizar progreso
+        function updateProgress(percent, message) {
+            progressBar.style.width = percent + '%';
+            statusText.textContent = message;
+            const timestamp = new Date().toLocaleTimeString();
+            detailsContent.textContent += `[${timestamp}] ${message}\n`;
+            detailsContent.scrollTop = detailsContent.scrollHeight;
+        }
+
+        updateProgress(10, 'Iniciando proceso de backup...');
+
+        // Simular progreso
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        updateProgress(30, 'Conectando con la base de datos...');
+
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        updateProgress(50, 'Exportando datos de libros...');
+
+        // Hacer petición real al servidor
+        const response = await fetch('php/backup.php');
+        const result = await response.json();
+
+        if (result.success) {
+            updateProgress(80, 'Procesando datos exportados...');
+            
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            updateProgress(100, 'Backup completado exitosamente!');
+
+            // Mostrar notificación de éxito
+            setTimeout(() => {
+                modal.style.display = 'none';
+                showNotification('success', 
+                    `✅ ${result.message}<br>
+                     📁 Archivo: ${result.file}<br>
+                     📊 Documentos: ${result.document_count}<br>
+                     💾 Tamaño: ${result.file_size}`
+                );
+            }, 1500);
+        } else {
+            throw new Error(result.message);
+        }
+
+    } catch (error) {
+        updateProgress(0, 'Error en el proceso');
+        showNotification('error', `❌ Error al crear backup: ${error.message}`);
+        
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 3000);
+    } finally {
+        // Rehabilitar botón
+        backupBtn.classList.remove('loading');
+        backupBtn.disabled = false;
+    }
+}
+
+// Función para mostrar notificaciones
+function showNotification(type, message) {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+        ${message}
+        <button class="close-notification" onclick="this.parentElement.remove()">×</button>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Animación de entrada
+    setTimeout(() => notification.classList.add('show'), 100);
+    
+    // Auto-eliminar después de 8 segundos
+    setTimeout(() => {
+        if (notification.parentElement) {
+            notification.remove();
+        }
+    }, 8000);
+}
+
+// Cerrar modal al hacer clic fuera
+document.addEventListener('click', function(e) {
+    const modal = document.getElementById('backupModal');
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
+});
 </script>
 </body>
 </html>
