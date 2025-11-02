@@ -1,0 +1,9 @@
+{
+    "require": {
+        "mongodb/mongodb": "^1.15"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist"
+    }
+}
